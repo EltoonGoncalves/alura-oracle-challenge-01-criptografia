@@ -1,44 +1,45 @@
-// Módulo para gestão de internacionalização
-const TranslationModule = (function() {
-    // Mapeamento dos textos em inglês e espanhol
-    const translations = {
-        pt: {
-            msgPlaceholder: 'Digite seu texto...',
-            msgExclamation: 'Apenas letras minúsculas e sem acento.',
-            btnCrip: 'Criptografar',
-            btnDescrip: 'Descriptografar',
-            title: 'Mensagem não encontrada.',
-            description: 'Digite um texto que você deseja criptografar ou descriptografar.'
-        },
-        es: {
-            msgPlaceholder: 'Escriba su texto...',
-            msgExclamation: 'Solo letras minúsculas y sin acento.',
-            btnCrip: 'Encriptar',
-            btnDescrip: 'Desencriptar',
-            title: 'No se encontró ningún mensaje.',
-            description: 'Escriba un texto que desee encriptar o desencriptar.'
-        }
-    };
-
-    // Função para alterar o idioma
-    function changeLanguage(language) {
-        const translation = translations[language] || translations.pt;
-        document.getElementById('texto-usuario').placeholder = translation.msgPlaceholder;
-        document.getElementById('msgExclamation').textContent = translation.msgExclamation;
-        document.getElementById('botao-criptografar').textContent = translation.btnCrip;
-        document.getElementById('botao-descriptografar').textContent = translation.btnDescrip;
-        document.getElementById('title').textContent = translation.title;
-        document.getElementById('description').textContent = translation.description;
+// Mapeamento dos textos em português e espanhol
+const translations = {
+    pt: {
+        msgPlaceholder: 'Digite seu texto...',
+        msgExclamation: 'Apenas letras minúsculas e sem acento.',
+        btnCrip: 'Criptografar',
+        btnDescrip: 'Descriptografar',
+        title: 'Mensagem não encontrada.',
+        description: 'Digite um texto que você deseja criptografar ou descriptografar.',
+    },
+    es: {
+        msgPlaceholder: 'Introduce tu texto...',
+        msgExclamation: 'Solo letras minúsculas y sin acentos.',
+        btnCrip: 'Encriptar',
+        btnDescrip: 'Desencriptar',
+        title: 'Mensaje no encontrado.',
+        description: 'Introduzca el texto que desea cifrar o descifrar.',
     }
+};
 
-    // Expondo a interface pública
-    return {
-        changeLanguage
-    };
-})();
-
-// Evento para alternar o idioma ao clicar no checkbox
-document.getElementById('language').addEventListener('change', function(event) {
-    const selectedLanguage = event.target.checked ? 'es' : 'pt';
-    TranslationModule.changeLanguage(selectedLanguage);
+const languageCheckbox = document.getElementById('language');
+languageCheckbox.addEventListener('change', function() {
+    const selectedLanguage = languageCheckbox.checked ? 'es' : 'pt';
+    updateContent(selectedLanguage);
 });
+
+function updateContent(language) {
+    console.log(language);
+    const textAreaElement = document.getElementById('texto-usuario');
+    const msgExclamationElement = document.getElementById('msgExclamation');
+    const btnCripElement = document.getElementById('botao-criptografar');
+    const btnDescripElement = document.getElementById('botao-descriptografar');
+    const titleElement = document.getElementById('title');
+    const descriptionElement = document.getElementById('description');
+
+    if (translations.hasOwnProperty(language)) {
+        const translation = translations[language];
+        textAreaElement.placeholder = translation.msgPlaceholder;
+        msgExclamationElement.textContent = translation.msgExclamation;
+        btnCripElement.textContent = translation.btnCrip;
+        btnDescripElement.textContent = translation.btnDescrip;
+        titleElement.textContent = translation.title;
+        descriptionElement.textContent = translation.description;
+    }
+}
