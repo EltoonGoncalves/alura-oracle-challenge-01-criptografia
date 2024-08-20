@@ -24,15 +24,6 @@ body {
     height: 40px;
 }
 
-.header__menu__link{
-
-    font-size: 24px;
-    font-weight: 600;
-    color: var(--cor-terciaria);
-    text-align: right;
-    text-decoration: none;
-}
-
 main {
     width: var(--main-min-width);
     height: calc(var(--body-min-hight) - 80px);
