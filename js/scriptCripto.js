@@ -36,7 +36,7 @@ function validarTextoComRegex(texto) {
     }
 }
 
-// Função para criptografar o texto do usuário
+// Função para criptografar o texto do usuário PASSO 15
 function criptografarTexto() {
     let texto = textoUsuario.value;
     if (validarTextoComRegex(texto)) {
@@ -59,7 +59,7 @@ function criptografarTexto() {
     }
 }
 
-// Função para descriptografar o texto do usuário
+// Função para descriptografar o texto do usuário PASSO 16
 function descriptografarTexto() {
     let texto = textoUsuario.value;
     if (validarTextoComRegex(texto)) {
@@ -82,7 +82,7 @@ function descriptografarTexto() {
     }
 }
 
-// Função para copiar o texto de saída para a área de transferência
+// Função para copiar o texto de saída para a área de transferência PASSO 18 EXTRA com uso de execCommand por causa de IE
 function copiarTexto() {
     textoSaida.select();
     document.execCommand('copy');
